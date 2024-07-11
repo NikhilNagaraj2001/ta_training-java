@@ -25,7 +25,7 @@ public class Task2 {
         textArea = driver.findElement(By.id("postform-text"));
         textArea.sendKeys("git config --global user.name  \"New Sheriff in Town\"\n" +
                 "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                "git push origin master --force\n");
+                "git push origin master --force");
 
 
         syntaxHighlitingDropDown = driver.findElement(By.xpath("//*[@id=\"w0\"]/div[5]/div[1]/div[3]/div/span/span[1]/span/span[2]"));
@@ -47,30 +47,32 @@ public class Task2 {
         title = driver.findElement(By.id("postform-name"));
         title.sendKeys(" how to gain dominance among developers");
 
+        driver.findElement(By.xpath("//*[@id=\"w0\"]/div[5]/div[1]/div[10]/button")).click();
+
     }
 
     @Test
     public void testTitle(){
-        String actualTitle = title.getAttribute("value");
+        String actualTitle = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/h1")).getText();
 
-        String expectedTitle =" how to gain dominance among developers";
+        String expectedTitle ="how to gain dominance among developers";
         Assert.assertEquals(actualTitle,expectedTitle,"The actual title is "+actualTitle+"\n Expected title is ' how to gain dominance among developers'");
     }
 
     @Test
     public void testSyntax(){
-        String actual = driver.findElement(By.xpath("//*[@id=\"select2-postform-format-container\"]")).getText();
+        String actual = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/a[1]")).getText();
         String expected = "Bash";
         Assert.assertEquals(actual, expected, "The selected syntax is " + actual + "\n Expected syntax is '" + expected + "'");
     }
 
     @Test
     public void testParagraph(){
-        String actual = driver.findElement(By.xpath("//*[@id=\"postform-text\"]")).getAttribute("value");
+        String actual = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[1]/div[4]/div[2]/ol")).getText();
         String expected = "git config --global user.name  \"New Sheriff in Town\"\n" +
                 "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                "git push origin master --force\n";
-        Assert.assertEquals(actual,expected, "Actual paragraph doesn't matches with the expected paragraph");
+                "git push origin master --force";
+        Assert.assertEquals(actual,expected, "Actual paragraph doesn't matches with the expected paragraph----->Actual  \n"+actual+"\n Expected ------> \n"+expected);
     }
 
 
