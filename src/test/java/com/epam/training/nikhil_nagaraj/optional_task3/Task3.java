@@ -3,18 +3,36 @@ package com.epam.training.nikhil_nagaraj.optional_task3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Task3 {
-    @Test
-    public void testTask3(){
-        WebDriver driver = new ChromeDriver();
+
+    private static WebDriver driver;
+
+    @BeforeClass
+    public void setUp(){
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://cloud.google.com/products/calculator");
+    }
 
-        driver.findElement(By.className("UywwFc-vQzf8d")).click();
+    @Test(priority=1)
+    public void clickOnAddToEstimate(){
+        AddToEstimate addToEstimate = new AddToEstimate(driver);
+        addToEstimate.clickAddToElement();
+    }
 
-        driver.findElement(By.xpath("//h2[text()='Compute Engine'][contains(@class,'honxjf')]")).click();
+    @Test(priority = 2)
+    public void clickOnComputeEngine(){
+        ComputeEngine computeEngine=new ComputeEngine(driver);
+        computeEngine.clickComputeEngine();
+    }
 
+    @Test(priority = 3)
+    public void computeEngineFields(){
+        ComputeEngineFields computeEngineFields=new ComputeEngineFields(driver);
+        computeEngineFields.noOfInstances(""+4);
     }
 }
