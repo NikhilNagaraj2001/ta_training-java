@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-
 public class Task1 {
     WebDriver driver;
     @BeforeClass
@@ -28,6 +27,7 @@ public class Task1 {
             pasteExpiration.click();
         WebElement pasteTitle = driver.findElement(By.id("postform-name"));
             pasteTitle.sendKeys("helloweb");
+        driver.findElement(By.xpath("//*[@id=\"w0\"]/div[5]/div[1]/div[10]/button")).click();
 
     }
 }
