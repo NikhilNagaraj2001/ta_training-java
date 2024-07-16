@@ -3,6 +3,7 @@ package com.epam.training.nikhil_nagaraj.optional_task2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ public class Task2 {
     private static WebDriver driver;
     @Test
     public void test(){
-        driver=new EdgeDriver();
+        driver=new ChromeDriver();
         driver.get("https://pastebin.com/");
         driver.manage().window().maximize();
 
