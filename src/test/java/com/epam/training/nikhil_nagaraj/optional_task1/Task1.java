@@ -29,5 +29,6 @@ public class Task1 {
             pasteTitle.sendKeys("helloweb");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         driver.close();
+
     }
 }
